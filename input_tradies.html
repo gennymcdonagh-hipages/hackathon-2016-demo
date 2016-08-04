@@ -281,7 +281,7 @@ _gaq.push(['_trackPageview']);
                     <input id="abn" name="full_name" type="text" value="" class=" form-control " tabindex="5"
                            onblur="if ($('#abn').val() === '1234'){
                            $('#name').val('Ser Gregor Clegane');
-                           $('#category').val('5678');
+                           $('#category').html('<label>Tradie category</label><input class=\' form-control\' value=\'Painters\' disabled />');
                            $('#email').val('the_mountain78@hotmail.com');
                            $('#phone').val('0400 123 456');
                            }"
@@ -294,7 +294,7 @@ _gaq.push(['_trackPageview']);
                 </div>
 
                 <!-- category -->
-                <div class="form-group man pan clearfix mtl">
+                <div id="category" class="form-group man pan clearfix mtl">
                     <label class=" ">Tradie category</label>
                     <input class=" form-control " id="keyword" name="search_str" type="hidden" value="" />
 
