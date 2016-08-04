@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="css/f0e2e88c.global_ie1.min.css"  media="all" /><link rel="stylesheet" type="text/css" href="http://assets.homeimprovementpages.com.au/css/8e3575da.global_ie2.min.css"  media="all" />    <![endif]-->
     <!--[if lte IE 8]>
     <link rel="stylesheet" type="text/css" href="http://assets.homeimprovementpages.com.au/css/fc24a9c5.ie.min.css"  media="all" />    <![endif]-->
-	<script type="text/javascript" language="javascript" src="js/304b8622.global_hui_look.min.js"></script>                <script language="javascript" type="text/javascript" async src="http://www.homeimprovementpages.com.au/js/short_list.php?ver=1.4"></script>
+	<script type="text/javascript" language="javascript" src="js/304b8622.global_hui_look.min.js"></script>               
         <script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-217229-2']);
@@ -33,23 +33,17 @@ _gaq.push(['_setSiteSpeedSampleRate', 50]);
 
 _gaq.push(['_gat._forceSSL']);
 
-</script><script src="//cdn.optimizely.com/js/102322581.js"></script>
-</script><script type="text/javascript">// track page view
+</script>
+<script type="text/javascript">// track page view
 _gaq.push(['_trackPageview']);
-</script><script type="text/javascript" src="/js/custom.ga.header.js?v=5"></script><script type="text/javascript">
-// GA native js
-(function() {
-    var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>	<meta name="robots" content="noindex, follow" />
+</script>
+    <meta name="robots" content="noindex, follow" />
 <link type="text/css" rel="stylesheet" href="css/478edad4.global_hui.min.css" media="screen">
 <link type="text/css" rel="stylesheet" href="css/af88f72c.hui_core_prefixed.min.css" media="screen">
 <link type="text/css" rel="stylesheet" href="css/4e3b80ba.selectize.min.css" media="all">
 <script type="text/javascript" src="js/fb3c677b.selectize.min.js" ></script>
 
-<script type="text/javascript" src="gq.js" ></script> <!-- todo replace with dummy -->
+<script type="text/javascript" src="gq.js" ></script>
 
 <script type="text/javascript" src="js/89e2fad1.module_get_quotes.min.js" ></script>
 
@@ -61,15 +55,7 @@ _gaq.push(['_trackPageview']);
         
     </head>
 <body class="">
-<!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TH7NGH"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TH7NGH');</script>
-<!-- End Google Tag Manager --><div  id="css_revamp">
+<div id="css_revamp">
     <script type="text/javascript">
         var isPhone = '';
     </script>
@@ -747,149 +733,9 @@ $(document).ready(function () {
         VTK_Searchbar_Ulility.initGetGuotesSimpleWhatDropdown('search_practice','drilldown_cat_id','get_quotes_questions','keyword');
     });
 </script>
-<script type="text/javascript">
 
-    var addressField = document.getElementById('where');
-    var autocomplete;
-    var componentForm = {
-        subpremise: 'short_name',
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'short_name',
-        administrative_area_level_1: 'short_name',
-        postal_code: 'short_name'
-    };
 
-    function initAutocomplete() {
-        // Create the autocomplete object, restricting the search to geographical
-        // location types.
-        autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('where')),
-            {
-                types: ['geocode'],
-                componentRestrictions: {country: 'au'}
-            });
-
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-        autocomplete.addListener('place_changed', fillInAddress);
-        google.maps.event.addDomListener(addressField, 'keypress', function (e) {
-            if (e.keyCode === 13) {
-                e.preventDefault();
-            }
-        });
-    }
-
-    function validateAddress() {
-        var validator = $('#autocomplete_form').validate();
-        validator.element('#where');
-    }
-
-    function emptyHiddenFields() {
-        for (var component in componentForm) {
-            document.getElementById(component).value = '';
-            document.getElementById(component).disabled = false;
-        }
-    }
-
-    function fillInAddress() {
-        // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace();
-
-        emptyHiddenFields();
-
-        if (place !== undefined && place.address_components !== undefined) {
-            // Get each component of the address from the place details
-            // and fill the corresponding field on the form.
-            for (var i = 0; i < place.address_components.length; i++) {
-                var addressType = place.address_components[i].types[0];
-                if (componentForm[addressType]) {
-                    document.getElementById(addressType).value = place.address_components[i][componentForm[addressType]];
-                }
-            }
-            
-            document.getElementById('w').value = document.getElementById('postal_code').value + ' - ' + document.getElementById('locality').value;
-        } else {
-            document.getElementById('w').value = "";
-        }
-
-        validateAddress();
-    }
-
-    // Bias the autocomplete object to the user's geographical location,
-    // as supplied by the browser's 'navigator.geolocation' object.
-    function geolocate() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                var geolocation = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-                var circle = new google.maps.Circle({
-                    center: geolocation,
-                    radius: position.coords.accuracy
-                });
-                autocomplete.setBounds(circle.getBounds());
-            });
-        }
-    }
-
-    addressField.blur(function() {
-        google.maps.event.trigger(autocomplete, 'place_changed');
-    });
-
-    $(addressField).change(function() {
-       emptyHiddenFields();
-    });
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7mqYxIe_bu5j1IMtDyLj9Lm4S7fJMIo8&libraries=places&callback=initAutocomplete" async defer></script>            </div>
-        </div>
-    </div>
-    <script>
-// the custom refresh function on the page
-var customRefresh = function() {
-    // do the user check
-    var url = '/consumer/user_info';
-    jQuery.get(
-        url,
-        function(data, textStatus) {
-            if (textStatus != 'success') {
-                // do nothing...
-            }
-            // check if logged in
-            if (data.loggedin) {
-                // use all the data...
-                // console.log(data);
-                // work out the name/email
-                var isDataAvailable = false;
-                if (data.fullname) {
-                    var nameDiv = '<p class="mtn mbs mln pan grid_14">' + data.fullname + '</p>';
-                    $('input[name=full_name]').val(data.fullname);
-                    $('input[name=full_name]').hide('slow').replaceWith(nameDiv).show('slow');
-                    isDataAvailable = true;
-                }
-                if (data.email) {
-                    var emailDiv = '<p class="mtn mbs mln pan grid_14">' + data.email + '</p>';
-                    $('input[name=email]').val(data.email);
-                    $('input[name=email]').hide('slow').replaceWith(emailDiv).show('slow');
-                    $('#why_need_email').hide();
-                    isDataAvailable = true;
-                }
-                if (data.phone) {
-                    $('#phone').val(data.phone);
-                    $('#phone').removeClass('error');
-                    isDataAvailable = true;
-                }
-                if (isDataAvailable) {
-                    $('#get_quotes_fb_button').hide('slow');
-                    $('label.error').hide();
-                }
-            }
-        },
-        'json'
-    );
-}
-</script></div>
+</div>
 
 <!--googleoff: index-->
 
