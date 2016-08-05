@@ -2,6 +2,7 @@
 <html xmlns:og="http://opengraphprotocol.org/schema/"
       xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
+    <meta name="viewport" content="width=device-width">
 
 	<meta charset="iso-8859-1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +45,6 @@ _gaq.push(['_trackPageview']);
                 <style>
             body {background-color: #eee;}
             #hui {background-color: inherit}
-            #hui .container {min-width: 1000px !important; width: 1000px}
         </style>
         
     </head>
@@ -68,31 +68,41 @@ _gaq.push(['_trackPageview']);
     </script>
 
 
-    <div class="clearfix width_full header header--simple">
-        <div class="container_24">
-            <div class="header__logo-only grid_10 mhn mobile_unit">
-                <img src="images/tyrell-logo.png" />
+    <div id="hui">
+
+
+    <style>
+        #hui .navbar-default {
+            background-color: #fff;
+            border-top: 6px solid #ff7b11;
+            font-family: "Source Sans Pro",arial,helvetica,arial,sans-serif;
+            font-size: 15px;
+        }
+
+        .tyrell {
+            margin: 10px 0;
+        }
+        
+        .hipages {
+            margin: 10px 0;
+        }
+
+    </style>
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <img class="tyrell" src="images/tyrell-logo.png">
             </div>
-            <div class="grid_14 mll mrn mobile_unit_extend header__logo-only grid_10 mhn mobile_unit">
-                <div class="unit_extend ">
-                    <small class="grey_light prm mprs mobile_block malign_right">
+            <div class="navbar-right">
+                <div class="hipages">
+                    <small class="grey_light prm mprs mobile_block malign_right float-right">
                         In partnership with                        </small>
                     <img src="http://assets.homeimprovementpages.com.au/images/hui/hipages-logo-simple.png" />
                 </div>
             </div>
         </div>
-    </div>
-
-<style>
-        a.btn_ghost {
-        color:#444;
-        border-color:#777
-    }
-    a.btn_ghost:hover {
-        color:#888;
-        border-color:#999
-    }
-</style>        <div id="hui">
+    </nav>
     
 
 
